@@ -1630,7 +1630,7 @@ instead.
 
 <!-- YAML
 changes:
-  - version: REPLACEME
+  - version: v26.0.0
     pr-url: https://github.com/nodejs/node/pull/60635
     description: End-of-Life.
   - version: v25.0.0
@@ -2841,7 +2841,7 @@ This property is a reference to the instance itself.
 
 <!-- YAML
 changes:
-  - version: REPLACEME
+  - version: v26.0.0
     pr-url: https://github.com/nodejs/node/pull/60657
     description: End-of-Life.
   - version: v12.0.0
@@ -4033,7 +4033,7 @@ Please use the [`crypto.createHmac()`][] method to create Hmac instances.
 
 <!-- YAML
 changes:
-  - version: REPLACEME
+  - version: v26.0.0
     pr-url: https://github.com/nodejs/node/pull/61084
     description: End-of-Life.
   - version: v23.0.0
@@ -4241,7 +4241,7 @@ an internal nodejs implementation rather than a public facing API, use `node:tls
 
 <!-- YAML
 changes:
-  - version: REPLACEME
+  - version: v26.0.0
     pr-url: https://github.com/nodejs/node/pull/60657
     description: End-of-Life.
   - version:
@@ -4431,10 +4431,12 @@ import { opendir } from 'node:fs/promises';
 
 <!-- YAML
 changes:
-  - version: REPLACEME
+  - version: v26.0.0
     pr-url: https://github.com/nodejs/node/pull/62173
     description: Runtime deprecation.
-  - version: v25.7.0
+  - version:
+     - v25.7.0
+     - v24.15.0
     pr-url: https://github.com/nodejs/node/pull/61632
     description: Documentation-only deprecation.
 -->
@@ -4449,7 +4451,9 @@ type of the readable half of the constructed readable-writable pair, use the
 
 <!-- YAML
 changes:
-  - version: v25.7.0
+  - version:
+     - v25.7.0
+     - v24.15.0
     pr-url: https://github.com/nodejs/node/pull/61713
     description: Documentation-only deprecation.
 -->
@@ -4485,10 +4489,12 @@ const server = http2.createSecureServer({
 
 <!-- YAML
 changes:
-  - version: REPLACEME
+  - version: v26.0.0
     pr-url: https://github.com/nodejs/node/pull/62453
     description: Runtime deprecation.
-  - version: v25.9.0
+  - version:
+     - v25.9.0
+     - v24.15.0
     pr-url: https://github.com/nodejs/node/pull/62321
     description: Documentation-only deprecation.
 -->
@@ -4510,10 +4516,12 @@ will throw an error in a future version. This includes
 
 <!-- YAML
 changes:
-  - version: REPLACEME
+  - version: v26.0.0
     pr-url: https://github.com/nodejs/node/pull/62453
     description: Runtime deprecation.
-  - version: v25.9.0
+  - version:
+     - v25.9.0
+     - v24.15.0
     pr-url: https://github.com/nodejs/node/pull/62321
     description: Documentation-only deprecation.
 -->
@@ -4527,10 +4535,12 @@ deprecated and will throw an error in a future version.
 
 <!-- YAML
 changes:
-  - version: REPLACEME
+  - version: v26.0.0
     pr-url: https://github.com/nodejs/node/pull/62401
     description: Runtime deprecation.
-  - version: v25.9.0
+  - version:
+     - v25.9.0
+     - v24.15.0
     pr-url: https://github.com/nodejs/node/pull/62395
     description: Documentation-only deprecation.
 -->
@@ -4547,6 +4557,22 @@ Supporting async hooks has proven to be complex, involving worker threads orches
 that have proven unresolveable. See [caveats of asynchronous customization hooks][]. Please migrate to
 `module.registerHooks()` as soon as possible as `module.register()` will be
 removed in a future version of Node.js.
+
+### DEP0206: Calling `digest()` on an already-finalized `Hmac` instance
+
+<!-- YAML
+changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/63121
+    description: Documentation-only deprecation.
+-->
+
+Type: Documentation-only
+
+Calling `hmac.digest()` more than once returns an empty buffer instead of
+throwing an error. This behavior is inconsistent with `hash.digest()` and
+may lead to subtle bugs. Calling `hmac.digest()` on a finalized `Hmac` instance
+will throw an error in a future version.
 
 [DEP0142]: #dep0142-repl_builtinlibs
 [NIST SP 800-38D]: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf
